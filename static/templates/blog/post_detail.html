@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <a href="{% url 'home' %}">← Back to home</a>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.created_at }}</p>
+    <p>{{ post.content }}</p>
+</body>
+</html>

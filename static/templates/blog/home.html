@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nature Explorer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #e7f6e7;
+    }
+    h1 {
+      color: #2e8b57;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .plant-btn { background-color: #90ee90; }
+    .animal-btn { background-color: #add8e6; }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌳 Welcome to Nature Explorer 🐾</h1>
+  <p>Click below to see the varieties:</p>
+
+  <button class="plant-btn" onclick="showList('plants')">🌱 Plants</button>
+  <button class="animal-btn" onclick="showList('animals')">🦁 Animals</button>
+
+  <h2>Available Varieties:</h2>
+  <ul id="list"></ul>
+
+  <script>
+    const data = {
+      plants: ["Neem", "Tulsi", "Rose", "Banana Tree", "Aloe Vera", "Mango Tree"],
+      animals: ["Elephant", "Tiger", "Monkey", "Peacock", "Cobra", "Cow"]
+    };
+
+    function showList(type) {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      data[type].forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
