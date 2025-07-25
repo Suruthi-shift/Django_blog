@@ -1,51 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Nature Explorer</title>
+  <meta charset="UTF-8" />
+  <title>Traditional Products</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Verdana', sans-serif;
       text-align: center;
+      margin: 0;
       padding: 30px;
-      background-color: #e7f6e7;
+      background: linear-gradient(to right, #fffbea, #e0d8b0);
     }
     h1 {
-      color: #2e8b57;
+      color: #8b4513;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 20px;
     }
     button {
-      margin: 10px;
       padding: 10px 20px;
+      margin: 10px;
       font-size: 16px;
       border-radius: 8px;
       border: none;
       cursor: pointer;
+      transition: transform 0.2s;
     }
-    .plant-btn { background-color: #90ee90; }
-    .animal-btn { background-color: #add8e6; }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .pottery-btn { background-color: #deb887; }
+    .handmade-btn { background-color: #f4a460; }
+    .next-btn { background-color: #8b0000; color: white; }
     ul {
       list-style-type: none;
       padding: 0;
+      margin-top: 20px;
     }
     li {
-      margin: 5px;
+      background-color: #fff8dc;
+      padding: 10px;
+      margin: 6px auto;
+      border-radius: 10px;
+      width: 60%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       font-size: 18px;
+    }
+    .dashboard {
+      display: none;
+    }
+    input {
+      padding: 8px;
+      margin: 8px;
+      width: 220px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
     }
   </style>
 </head>
 <body>
-  <h1>🌳 Welcome to Nature Explorer 🐾</h1>
-  <p>Click below to see the varieties:</p>
 
-  <button class="plant-btn" onclick="showList('plants')">🌱 Plants</button>
-  <button class="animal-btn" onclick="showList('animals')">🦁 Animals</button>
+  <!-- Home Dashboard -->
+  <div id="homeDashboard">
+    <h1>🏺 Welcome to Traditional Products 🧵</h1>
+    <p>Explore artisan-made Pottery and Handmade wonders</p>
 
-  <h2>Available Varieties:</h2>
-  <ul id="list"></ul>
+    <button class="pottery-btn" onclick="showList('pottery')">🏺 Pottery</button>
+    <button class="handmade-btn" onclick="showList('handmade')">🧵 Handmade</button>
+    <button class="next-btn" onclick="switchDashboard()">➡️ Place Order</button>
+
+    <h2>Available Varieties:</h2>
+    <ul id="list"></ul>
+  </div>
+
+  <!-- Order Dashboard -->
+  <div id="orderDashboard" class="dashboard">
+    <h1>🛒 Place Your Order</h1>
+    <p>Fill in the details to complete your purchase</p>
+
+    <input type="text" placeholder="Username"><br>
+    <input type="password" placeholder="Password"><br>
+    <input type="text" placeholder="Location"><br>
+    <input type="text" placeholder="Item to Order"><br>
+    <button class="next-btn" onclick="alert('Order placed successfully!Thank you for supporting traditional artisans. 🙌')">✅ Submit Order</button><br>
+    <button class="handmade-btn" onclick="switchDashboard(true)">🔙 Back to Products</button>
+  </div>
 
   <script>
     const data = {
-      plants: ["Neem", "Tulsi", "Rose", "Banana Tree", "Aloe Vera", "Mango Tree"],
-      animals: ["Elephant", "Tiger", "Monkey", "Peacock", "Cobra", "Cow"]
+      pottery: [
+        "Terracotta Vase 🏺", "Clay Lamp 🪔", "Earthen Bowl 🍲",
+        "Glazed Tea Set 🍵", "Incense Holder 🧘‍♀️", "Miniature Sculptures 🗿", "Hand-Painted Pot 🎨",
+        "Decorative Jar 🏵", "Traditional Water Jug 💧", "Ceramic Oil Diffuser 🌸", "Clay Bird Feeder 🐦", "Rustic Clay Wall Art 🖼",
+      ],
+      handmade: [
+        "Jute Bag 👜",
+        "Handwoven Basket 🧺",
+        "Cotton Quilt 🛏",
+        "Embroidered Shawl 🧣",
+        "Palm Leaf Mat 🌿",
+        "Bamboo Craft 🎋",
+        "Hand-stitched Diary 📓",
+        "Terracotta Jewelry 💍",
+        "Block-printed Tablecloth 🧶",
+        "Coconut Shell Spoon 🥄",
+        "Embroidered Cushion 🛋",
+        "Kalamkari Wall Hanging 🖼"
+
+      ]
     };
 
     function showList(type) {
@@ -56,6 +122,11 @@
         li.textContent = item;
         list.appendChild(li);
       });
+    }
+
+    function switchDashboard(back = false) {
+      document.getElementById("homeDashboard").style.display = back ? "block" : "none";
+      document.getElementById("orderDashboard").style.display = back ? "none" : "block";
     }
   </script>
 </body>
